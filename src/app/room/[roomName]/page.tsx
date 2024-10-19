@@ -35,8 +35,8 @@ export default function RoomPage() {
 
     try {
       const callFrame = DailyIframe.createFrame(containerRef.current, {
-        url: roomURL,
-        showLeaveButton: false,
+      url: roomURL,
+      showLeaveButton: false,
       })
 
       callFrameRef.current = callFrame
@@ -45,10 +45,10 @@ export default function RoomPage() {
       callFrame.on('participant-left', handleParticipantLeft)
 
       callFrame.join().then(() => {
-        console.log('Successfully joined the call')
+      console.log('Successfully joined the call')
       }).catch((err) => {
-        console.error('Failed to join call:', err)
-        setError(`Failed to join the call: ${err.message}`)
+      console.error('Failed to join call:', err)
+      setError(`Failed to join the call: ${err.message}`)
       })
     } catch (err) {
       console.error('Error creating Daily iframe:', err)
@@ -115,6 +115,11 @@ export default function RoomPage() {
           </CardHeader>
           <CardContent>
             <div ref={containerRef} className="w-full aspect-video rounded-lg overflow-hidden shadow-lg" />
+            {error && (
+              <div className="text-red-500 text-center mb-4">
+                {error}
+              </div>
+            )}
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <div className="flex flex-wrap justify-center gap-2 sm:gap-4">

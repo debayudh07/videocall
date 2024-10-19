@@ -24,7 +24,7 @@ export default function CreateRoomPage() {
       } else {
         setError('Failed to create room.')
       }
-    } catch (error) {
+    } catch {
       setError('An error occurred.')
     } finally {
       setLoading(false)
